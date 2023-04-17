@@ -7,12 +7,7 @@ const usersSchema = new mongoose.Schema(
         email: String,
         createdAt: { type: Date, default: Date.now },
         isAuthor: { type: Boolean, default: false },
-        isPremium: { type: Boolean, default: false },
-        role: {
-            type: String,
-            default: "user",
-            enum: ["author", "user", "guest", "premiumUser"],
-        },
+        isPremium: { type: Boolean, default: false }
     },
     { collection: "users" }
 );
