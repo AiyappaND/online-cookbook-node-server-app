@@ -25,9 +25,15 @@ const deleteRecipe = async (req, res) => {
     res.json(status);
 }
 
+const getOneRecipe = async (req, res) => {
+    const recipeToFind = req.params['rid'];
+    res.json(recipeToFind);
+}
+
 export default (app) => {
     app.post('/api/recipes', createRecipe);
     app.get('/api/recipes', findRecipes);
     app.put('/api/recipes/:rid', updateRecipe);
     app.delete('/api/recipes/:rid', deleteRecipe);
+    app.get('/api/recipes/:rid', getOneRecipe);
 }
