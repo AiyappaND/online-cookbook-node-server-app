@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const schema = mongoose.Schema({
+const recipeSchema = new mongoose.Schema({
     title: String,
     author: String,
     cuisine: String,
@@ -8,11 +8,11 @@ const schema = mongoose.Schema({
 
     prep_time: Number,
     cook_time: Number,
-    bookmarks: Number,
+    bookmarks: { type: Number, default: 0 },
 
     ingredients: [{
         name : String,
         quantity : String
     }]
 }, {collection: 'recipes'});
-export default schema;
+export default recipeSchema;
