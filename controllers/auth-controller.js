@@ -38,6 +38,12 @@ const AuthController = (app) => {
         res.json(currentUser);
     };
 
+    const anonymousProfile = async (req, res) => {
+        const username = req.params['username'];
+        const userToView = await usersDao.findUserByUsername(username);
+        res.json(userToView);
+    }
+
     const logout = async (req, res) => {
         req.session.destroy();
         res.sendStatus(200);
@@ -60,6 +66,7 @@ const AuthController = (app) => {
     app.post("/api/users/profile",  profile);
     app.post("/api/users/logout",   logout);
     app.put ("/api/users/:uid",     update);
+    app.get ("/api/users/:username",     anonymousProfile);
 };
 
 export default AuthController;
