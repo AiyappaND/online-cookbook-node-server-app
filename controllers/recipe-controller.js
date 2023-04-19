@@ -27,7 +27,8 @@ const deleteRecipe = async (req, res) => {
 
 const getOneRecipe = async (req, res) => {
     const recipeToFind = req.params['rid'];
-    res.json(recipeToFind);
+    const foundRecipe = await recipeDao.findRecipeById(recipeToFind);
+    res.json(foundRecipe);
 }
 
 export default (app) => {
