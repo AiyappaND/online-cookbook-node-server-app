@@ -13,6 +13,8 @@ const recipeSchema = new mongoose.Schema({
     ingredients: [{
         name : String,
         quantity : String
-    }]
+    }],
+
+    createdAt: { type: Date, default: Date.now },
 }, {collection: 'recipes'});
 export default recipeSchema;
