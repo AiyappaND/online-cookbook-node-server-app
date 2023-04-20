@@ -14,7 +14,7 @@ const recipeSchema = new mongoose.Schema({
         name : String,
         quantity : String
     }],
-
+    local_source: { type: Boolean, default: true },
     createdAt: { type: Date, default: Date.now },
 }, {collection: 'recipes'});
 export default recipeSchema;
