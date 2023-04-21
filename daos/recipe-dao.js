@@ -11,3 +11,5 @@ export const updateRecipe = (rid, recipe) => recipeModel.updateOne({_id: rid}, {
 export const findRecipeById = (rid) => recipeModel.findById(rid);
 
 export const findLocalRecipeByName = (name) => recipeModel.find({title: { $regex: name, $options: 'i' }})
+
+export const findLocalRecipesByUserName = (username) => recipeModel.find({author: username}).sort('-createdAt');

@@ -37,6 +37,12 @@ const getLocalMatchingRecipe = async (req, res) => {
     res.json(recipesFound);
 }
 
+const getLocalRecipeByUsername = async (req, res) => {
+    const username = req.params['username'];
+    const recipesFound = await recipeDao.findLocalRecipesByUserName(username);
+    res.json(recipesFound);
+}
+
 export default (app) => {
     app.post('/api/recipes', createRecipe);
     app.get('/api/recipes', findRecipes);
@@ -44,4 +50,5 @@ export default (app) => {
     app.delete('/api/recipes/:rid', deleteRecipe);
     app.get('/api/recipes/getOne/:rid', getOneRecipe);
     app.get('/api/recipes/findLocal/:name', getLocalMatchingRecipe);
+    app.get('/api/recipes/findByUsername/:username', getLocalRecipeByUsername);
 }
