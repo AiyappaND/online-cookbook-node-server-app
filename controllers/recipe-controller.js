@@ -25,9 +25,23 @@ const deleteRecipe = async (req, res) => {
     res.json(status);
 }
 
+const getOneRecipe = async (req, res) => {
+    const recipeToFind = req.params['rid'];
+    const foundRecipe = await recipeDao.findRecipeById(recipeToFind);
+    res.json(foundRecipe);
+}
+
+const getLocalMatchingRecipe = async (req, res) => {
+    const recipeName = req.params['name'];
+    const recipesFound = await recipeDao.findLocalRecipeByName(recipeName);
+    res.json(recipesFound);
+}
+
 export default (app) => {
     app.post('/api/recipes', createRecipe);
     app.get('/api/recipes', findRecipes);
     app.put('/api/recipes/:rid', updateRecipe);
     app.delete('/api/recipes/:rid', deleteRecipe);
+    app.get('/api/recipes/getOne/:rid', getOneRecipe);
+    app.get('/api/recipes/findLocal/:name', getLocalMatchingRecipe);
 }
