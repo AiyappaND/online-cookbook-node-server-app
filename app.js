@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import RecipeController from "./controllers/recipe-controller.js";
 import AuthController from "./controllers/auth-controller.js";
 import BookmarksController from "./controllers/bookmarks-controller.js";
+import ContactController from "./controllers/contact-controller.js";
 
 const CONNECTION_STRING = process.env.DB_CONNECTION_STRING
     || "mongodb://127.0.0.1:27017/online_cookbook"
@@ -32,5 +33,6 @@ app.use(
 RecipeController(app);
 AuthController(app);
 BookmarksController(app);
+ContactController(app);
 
 app.listen(process.env.PORT || 4000);
